@@ -6,8 +6,8 @@ require "test/unit"
 class TestFraccion < Test::Unit::TestCase
   
 	def test
-		@prueba = Fraccion.new(6,3)
-		@prueba1 = Fraccion.new(5,4)
+		@prueba = Fraccion.new(10,5)
+		@prueba1 = Fraccion.new(18,4)
         
 		assert_equal("10/5", @prueba.to_s)
                 assert_equal("18/4", @prueba1.to_s)
