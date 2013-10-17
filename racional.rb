@@ -56,8 +56,8 @@ class Fraccion                    	#METODOS
 end
 
 
+#MAIN
 
-#Creación de objetos y salida por pantalla para ver el funcionamiento
 frac1 = Fraccion.new(8,13)
 frac2 = Fraccion.new(21,9)
 
