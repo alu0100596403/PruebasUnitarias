@@ -22,36 +22,39 @@ class Fraccion                    	#METODOS
         end
 
 	
-        def -(other)										#RESTA
-	  aux = mcm(@denom, other.denom)
+        def -(other)                                          #método "resta", recibe un objeto como parámetro
+	  aux = mcm(@denom, other.denom)                          #mcm de los denominadores
 	  temp = Fraccion.new(((aux/@denom)*@num)-((aux/other.denom)*other.num),aux) #resta de los objetos
 	  simplificar(temp)                                  #simplificación del resultado
         end
 
 	
-        def *(other)										#MULTIPLICACION
-	  temp=Fraccion.new(@num*other.num, @denom*other.denom) 
+        def *(other) 
+	  temp=Fraccion.new(@num*other.num, @denom*other.denom)  #MULTIPLICACION
 	  simplificar(temp)                                                 
         end 
         
 	
-        def /(other)										#DIVISION
+        def /(other)                                          #método "división", recibe un objeto como parámetro
 	  temp = Fraccion.new(@num*other.denom, @denom*other.num)
-	  simplificar(temp)
+	  simplificar(temp)                                  #simplificaión del resultado
         end
         
 	
-	def mcm(n, m)										#MCM
+	def mcm(n, m)                #método Mínimo Común Múltiplo
+	  
 	   aux=gcd(n,m)
-	  (n/aux)*m 
+	  (n/aux)*m
+	  
 	end
 	
 	
+    
        
-        def simplificar(other)									#SIMPLIFICADOR RACIONAL
-	  aux = gcd(other.num, other.denom)							#MCD entre num y denom
-	  Fraccion.new(other.num/aux, other.denom/aux) 
-	end
+        def simplificar(other)                                  #método que simplifica un racional
+	  aux = gcd(other.num, other.denom)                 #halla el mcd de numerador y denominador
+	  Fraccion.new(other.num/aux, other.denom/aux)         #divide los valores anteriores entre el mcd obtenido
+        end
 	
 end
 

@@ -1,0 +1,80 @@
+#! /usr/bin/ruby
+# Implementar en este fichero la clase para crear objetos racionales
+
+require "./gcd.rb"
+
+class Fraccion                    	#Clase que contendrá los métodos
+        attr_reader :n, :d        	#función que permite acceder a los atributos  
+					#de los objetos sin tener que definir los getters
+        def initialize(n,d)		#método para inicializar los objetos
+	  @num = n
+	  @denom = d         
+        end
+        
+	
+        def to_s		  #método para convertir los objetos a cadena
+	  "#{@n}/#{@d}"
+        end
+    
+	
+        def *(other)                                          #método "producto", se pasa un objeto como parámetro
+	  temp=Fraccion.new(@num*other.n, @denom*other.d)  #guarda el resultado en una variable local 
+	  simplificar(temp)                                  #simplificación del valor del resultado                        
+        end 
+        
+	
+        def /(other)                                          #método "división", recibe un objeto como parámetro
+	  temp = Fraccion.new(@num*other.d, @denom*other.n)
+	  simplificar(temp)                                  #simplificaión del resultado
+        end
+        
+	
+	def mcm(n, m)                #método Mínimo Común Múltiplo
+	  aux = gcd(n,m)
+	  (n/aux)*m
+	  
+	end
+	
+	
+        def +(other)                                          #método "suma", recibe un objeto como parámetro
+	  aux = mcm(@denom, other.d)                          #mcm de los denominadores
+	  temp = Fraccion.new(((aux/@denom)*@num)+((aux/other.d)*other.n),aux) #suma de los objetos
+	  simplificar(temp)                                  #simplificación del resultado
+        end
+
+	
+        def -(other)                                          #método "resta", recibe un objeto como parámetro
+	  aux = mcm(@denom, other.d)                          #mcm de los denominadores
+	  temp = Fraccion.new(((aux/@denom)*@num)-((aux/other.d)*other.n),aux) #resta de los objetos
+	  simplificar(temp)                                  #simplificación del resultado
+        end
+
+       
+        def simplificar(other)                                  #método que simplifica un racional
+	  aux = gcd(other.n, other.d)                 #halla el mcd de numerador y denominador
+	  Fraccion.new(other.n/aux, other.d/aux)         #divide los valores anteriores entre el mcd obtenido
+        end
+	
+end
+
+def gcd(u, v)
+  u, v = u.abs, v.abs
+  while v != 0
+    u, v = v, u % v
+  end
+  u
+end
+
+
+#Creación de objetos y salida por pantalla para ver el funcionamiento
+frac1 = Fraccion.new(120,50)
+frac2 = Fraccion.new(120,50)
+
+puts "Suma: #{frac1+frac2}"
+
+puts "Resta: #{frac1-frac2}"
+
+puts "Producto: #{frac1*frac2}"
+
+puts "Division: #{frac1/frac2}"
+
