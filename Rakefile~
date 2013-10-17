@@ -11,5 +11,5 @@ end
 
 desc "Test class Fraccion"
 task :test do
-  sh "ruby -Ilib -Itest ./tc_racional.rb"
+  sh "ruby -Ilib -Itest test/tc_racional.rb"
 end
