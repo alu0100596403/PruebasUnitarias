@@ -27,7 +27,7 @@ class TestFraccion < Test::Unit::TestCase
 
 	
         def fallando
-                assert_equal("11,8", Fraccion.new(11,8).to_s)        
+                assert_equal("9,8", Fraccion.new(9,8).to_s)        
         end
 	
 	

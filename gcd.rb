@@ -6,4 +6,5 @@ def gcd(u, v)
   u
 end
 
-puts gcd(120,50)
+
+
