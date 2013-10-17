@@ -4,15 +4,22 @@ require "./racional.rb"
 require "test/unit"
 
 class TestFraccion < Test::Unit::TestCase
-  
+ 
+	  
 	def test
 		@prueba = Fraccion.new(10,5)
 		@prueba1 = Fraccion.new(18,4)
-        
-		assert_equal("10/5", @prueba.to_s)
-                assert_equal("18/4", @prueba1.to_s)
-                assert_not_equal("22/10", @prueba.to_s)
-        end
-	
+		
+     
+                
+                
+                assert_equal "10/5", @prueba.to_s
+		assert_equal "13/2",(@prueba+@prueba1).to_s
+		assert_equal "-5/2",(@prueba-@prueba1).to_s
+		assert_equal "9/1",(@prueba*@prueba1).to_s
+		assert_equal "4/9",(@prueba/@prueba1).to_s
+  
+	end
+
 
 end
