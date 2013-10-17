@@ -24,8 +24,8 @@ class Fraccion                    	#METODOS
 	
         def -(other)										#RESTA
 	  aux = mcm(@denom, other.denom)
-	  temp = Fraccion.new(((aux/@denom)*@num)-((aux/other.denom)*other.num),aux) #resta de los objetos
-	  simplificar(temp)                                  #simplificación del resultado
+	  temp = Fraccion.new(((aux/@denom)*@num)-((aux/other.denom)*other.num),aux)
+	  simplificar(temp)                                  
         end
 
 	
